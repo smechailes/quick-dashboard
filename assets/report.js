@@ -27,6 +27,10 @@ fetch("countries.json")
     });
 
     document.querySelector("#prev-page").addEventListener("click", () => {
+        if (searched < 1) {
+            // console.log("we got here");
+            totalPages = Math.ceil(data.countries.length / itemsPerPage);
+          }
       // If current page is greater than 1, decrement current page and call 'fetchData' function again
       if (currentPage > 1) {
         currentPage--;
@@ -35,9 +39,13 @@ fetch("countries.json")
     });
 
     document.querySelector("#next-page").addEventListener("click", () => {
+        if (searched < 1) {
+            // console.log("we got here");
+            totalPages = Math.ceil(data.countries.length / itemsPerPage);
+          }
       // If current page is less than the total number of pages, increment current page and call 'fetchData' function again
-      console.log(currentPage + " no. of current pages");
-      console.log(totalPages + " no. of total pages");
+       console.log(currentPage + " no. of current pages for next page");
+       console.log(totalPages + " no. of total pages for next page");
       if (currentPage < totalPages) {
         currentPage++;
         fetchData(data);
@@ -50,31 +58,16 @@ fetch("countries.json")
 function fetchData(data) {
   console.log(data);
   let startIndex = (currentPage - 1) * itemsPerPage;
+  console.log("currentPage "+currentPage);
+  console.log("itemsPerPage "+itemsPerPage);
+  console.log("startIndex "+startIndex);
   let endIndex = startIndex + itemsPerPage;
   // Slice the data to be displayed on the current page
   let dataToRender = data.countries.slice(startIndex, endIndex);
   // Render the table with the sliced data
   renderTable(dataToRender);
-  //   if (searched < 1) {
-  //     totalPages = Math.ceil(data.countries.length / itemsPerPage);
-  //   }
   renderPagination(totalPages);
-  // Disable the button on the page of pagination
-  if (currentPage === 1) {
-    document.querySelector("#first-page").disabled = true;
-    document.querySelector("#prev-page").disabled = true;
-  } else {
-    document.querySelector("#first-page").disabled = false;
-    document.querySelector("#prev-page").disabled = false;
-  }
 
-  if (currentPage === 4) {
-    document.querySelector("#last-page").disabled = true;
-    document.querySelector("#next-page").disabled = true;
-  } else {
-    document.querySelector("#last-page").disabled = false;
-    document.querySelector("#next-page").disabled = false;
-  }
   // Add event listener to search box to handle search query
   const searchBox = document.querySelector("#search-box");
   searchBox.addEventListener("input", handleSearch);
@@ -85,19 +78,21 @@ function fetchData(data) {
     let filteredData;
     // Filter the data based on the search query and store the filtered data in a new array
     if (searchText === "") {
+      searched = 0;
       filteredData = fetchData(data);
     } else {
+      searched = searched + 1;
       filteredData = data.countries.filter((country) =>
         country.name.toLowerCase().startsWith(searchText)
       );
       // Render the table with the filtered data
       renderTable(filteredData);
-      console.log("filtered data is "+filteredData);
-        console.log("filtered Data's length is "+filteredData.length);
+      console.log("filtered data is " + filteredData);
+      console.log("filtered Data's length is " + filteredData.length);
       // Reset the current page to 1 and calculate the total number of pages based on the filtered data
       currentPage = 1;
       totalPages = Math.ceil(filteredData.length / itemsPerPage);
-      console.log("total pages in filtered data is "+totalPages);
+      console.log("total pages in filtered data is " + totalPages);
       // Update the page information text with the current page and total number of pages
       renderPagination(totalPages);
     }
@@ -120,34 +115,29 @@ function fetchData(data) {
 
   //renders pagination
   function renderPagination(totalPages) {
-    if(totalPages !== 1){
-        if (searched < 1) {
-            console.log("we got here");
-            totalPages = Math.ceil(data.countries.length / itemsPerPage);
-          }
+    // console.log("searched is "+searched);
+    if (searched < 1) {
+      // console.log("we got here");
+      totalPages = Math.ceil(data.countries.length / itemsPerPage);
     }
-    console.log("render Pagination ma +"+totalPages);
+    console.log("render Pagination ma +" + totalPages);
     document.querySelector(
       "#page-info"
     ).textContent = `Page ${currentPage} of ${totalPages}`;
     // console.log("total pages is "+totalPages);
+
+    // Disable the button on the page of pagination
+    document.querySelector("#first-page").disabled = currentPage == 1;
+    document.querySelector("#last-page").disabled = currentPage === 4;
+    document.querySelector("#next-page").disabled = currentPage === 4;
+    document.querySelector("#prev-page").disabled = currentPage === 1;
     if (totalPages === 1) {
       document.querySelector("#last-page").disabled = true;
       document.querySelector("#next-page").disabled = true;
     }
   }
 }
-// if (searched < 1) {
-//   totalPages = Math.ceil(data.countries.length / itemsPerPage);
-// }
 
-// document.querySelector("#page-info").textContent = `Page ${currentPage} of ${totalPages}`;
-
-// if(totalPages === 1){
-//     document.querySelector("#last-page").disabled = true;
-//     document.querySelector("#next-page").disabled = true;
-// }
-//}
 
 //   The code starts by declaring three variables - itemsPerPage, currentPage, and totalPages. itemsPerPage is set to 3, which means that each page will show 3 items. currentPage and totalPages are both initialized to 1.
 
