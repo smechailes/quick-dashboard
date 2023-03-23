@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/dashboard.css">
+  </head>
+  <body>
+    <header>
+        <aside id="sidebar">
+            <nav>
+              <ul>
+                <li><a href="#">Menu</a></li>
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li><a href="./report.html">Report</a></li>
+                <li><a href="./index.html">Logout</a></li>
+              </ul>
+            </nav>
+          </aside>
+    </header>
+    <div id="container"> 
+      <main>
+        <h2>Welcome to the Report</h2>
+        <section class="search">
+            <label for="search" class="search"></label>
+            <input type="search" name="search" placeholder="Write what you want to search" id="search-box"/>
+        </section>
+
+        <section class="report">
+            <table id="country-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Capital 2</th>
+                    <th>Population</th>
+                    <th>Currency</th>
+                    <th>language</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+              <div class="pagination">
+                <button id="first-page">First</button>
+                <button id="prev-page">Previous</button>
+                <span id="page-info"></span>
+                <button id="next-page">Next</button>
+                <button id="last-page">Last</button>
+              </div>
+        </section>
+      </main>
+</div>
+    <script src="./assets/report.js"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+{
+    "countries": [
+      {
+        "name": "USA",
+        "capital": "Washington D.C.",
+        "population": 331,
+        "currency": "USD",
+        "language": "English"
+      },
+      {
+        "name": "China",
+        "capital": "Beijing",
+        "population": 100,
+        "currency": "CNY",
+        "language": "Chinese"
+      },
+      {
+        "name": "India",
+        "capital": "New Delhi",
+        "population": 1,
+        "currency": "INR",
+        "language": "Hindi, English"
+      },
+      {
+        "name": "Japan",
+        "capital": "Tokyo",
+        "population": 126,
+        "currency": "JPY",
+        "language": "Japanese"
+      },
+      {
+        "name": "Brazil",
+        "capital": "Brasília",
+        "population": 212,
+        "currency": "BRL",
+        "language": "Portuguese"
+      },
+      {
+        "name": "Russia",
+        "capital": "Moscow",
+        "population": 145,
+        "currency": "RUB",
+        "language": "Russian"
+      },
+      {
+        "name": "Mexico",
+        "capital": "Mexico City",
+        "population": 128,
+        "currency": "MXN",
+        "language": "Spanish"
+      },
+      {
+        "name": "Germany",
+        "capital": "Berlin",
+        "population": 83,
+        "currency": "EUR",
+        "language": "German"
+      },
+      {
+        "name": "Indonesia",
+        "capital": "Jakarta",
+        "population": 273,
+        "currency": "IDR",
+        "language": "Indonesian"
+      },
+      {
+        "name": "Nigeria",
+        "capital": "Abuja",
+        "population": 206,
+        "currency": "NGN",
+        "language": "English"
+      }
+    ]
+  }
+  
